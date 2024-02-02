@@ -1,4 +1,4 @@
-import { useState , useCallback} from 'react'
+import { useState , useCallback, useEffect} from 'react'
 
 import './App.css'
 
@@ -13,11 +13,13 @@ function App() {
                                   if(numall){str+="0123456789"}
                                   if(charall){str+="!@#$%^&*"}
                                   for(let i=1;i<=length;i++){
-                                    let char=Math.floor(Math.random()*str.length+1)
-                                    pass=str.charAt(char)
+                                    let char=Math.floor(Math.random()*str.length + 1)
+                                    pass+=str.charAt(char)
                                   }  
                                   setpass(pass)
   }, [length,numall,charall,pass])
+
+  useEffect(()=>{pasgen()},[length,numall,charall,pasgen])
   return (
     <>
     
